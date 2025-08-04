@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MedControl Personal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="header-logo">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="header-text">
+                        <h1>MedControl Personal</h1>
+                        <p>Sistema Pessoal de Gestão em Saúde</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-badge">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span id="user-name">Minha Conta</span>
+                    </div>
+                    <button class="back-to-login-btn" onclick="goToLogin()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sair</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <div class="sidebar">
+                <nav class="tabs">
+                    <button class="tab-button active" onclick="showTab('dashboard')">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Dashboard</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab('exames')">
+                        <i class="fas fa-file-medical-alt"></i>
+                        <span>Exames</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab('medicamentos')">
+                        <i class="fas fa-pills"></i>
+                        <span>Medicamentos</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab('vacinas')">
+                        <i class="fas fa-syringe"></i>
+                        <span>Vacinas</span>
+                    </button>
+                    <button class="tab-button" onclick="showTab('dentista')">
+                        <i class="fas fa-tooth"></i>
+                        <span>Dentista</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="content">
+                <!-- Dashboard Tab -->
+                <div id="dashboard" class="tab-content active">
+                    <div class="page-header">
+                        <h2>Dashboard</h2>
+                        <p>Visão geral da sua saúde</p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-medical-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-exames">0</h3>
+                                <p>Exames Realizados</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-medicamentos">0</h3>
+                                <p>Medicamentos Ativos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-syringe"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-vacinas">0</h3>
+                                <p>Vacinas Aplicadas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tooth"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="total-consultas">0</h3>
+                                <p>Consultas Odontológicas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exames Tab -->
+                <div id="exames" class="tab-content">
+                    <div class="page-header">
+                        <h2>Controle de Exames</h2>
+                        <button class="btn-primary" onclick="openExamModal()">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Exame
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="exames-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Exame</th>
+                                    <th>Data</th>
+                                    <th>Médico</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Medicamentos Tab -->
+                <div id="medicamentos" class="tab-content">
+                    <div class="page-header">
+                        <h2>Controle de Medicamentos</h2>
+                        <button class="btn-primary" onclick="openMedicationModal()">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Medicamento
+                        </button>
+                    </div>
+                    
+                    <div class="medications-grid" id="medications-grid">
+                        <!-- Medicamentos serão carregados aqui -->
+                    </div>
+                </div>
+
+                <!-- Vacinas Tab -->
+                <div id="vacinas" class="tab-content">
+                    <div class="page-header">
+                        <h2>Controle de Vacinação</h2>
+                        <button class="btn-primary" onclick="openVaccineModal()">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Vacina
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="vacinas-table">
+                            <thead>
+                                <tr>
+                                    <th>Vacina</th>
+                                    <th>Data</th>
+                                    <th>Dose</th>
+                                    <th>Local</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Dentista Tab -->
+                <div id="dentista" class="tab-content">
+                    <div class="page-header">
+                        <h2>Controle Odontológico</h2>
+                        <button class="btn-primary" onclick="openDentalModal()">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Consulta
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="dental-table">
+                            <thead>
+                                <tr>
+                                    <th>Procedimento</th>
+                                    <th>Data</th>
+                                    <th>Dentista</th>
+                                    <th>Custo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
