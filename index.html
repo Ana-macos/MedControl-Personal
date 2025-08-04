@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedControl Personal - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h1>MedControl Personal</h1>
+                <p>Sistema Pessoal de Gestão em Saúde</p>
+            </div>
+            
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="username" placeholder="Nome de usuário" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" placeholder="Senha" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">Entrar</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+                
+                <button type="button" class="demo-btn" onclick="loginAsDemo()">
+                    <i class="fas fa-play"></i>
+                    Acessar Demonstração
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="login-script.js"></script>
+</body>
+</html>
+
